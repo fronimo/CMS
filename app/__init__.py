@@ -1,5 +1,7 @@
 # Import flask and template operators
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, request, url_for
+
+#from app import app
 
 # Import SQLAlchemy
 from flask.ext.sqlalchemy import SQLAlchemy
@@ -19,6 +21,10 @@ db = SQLAlchemy(app)
 
 # Initiate Bower
 Bower(app)
+
+@app.route('/')
+def index():
+	return render_template('index.html')
 
 # Sample HTTP error handling
 @app.errorhandler(404)
