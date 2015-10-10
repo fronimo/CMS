@@ -1,6 +1,6 @@
 # Import flask and template operators
-from flask import Flask, render_template, redirect, request, url_for
-
+from flask import Flask, render_template
+from flask_mail import Mail
 #from app import app
 
 # Import SQLAlchemy
@@ -21,6 +21,13 @@ db = SQLAlchemy(app)
 
 # Initiate Bower
 Bower(app)
+
+app.config['MAIL_SERVER'] = 'evop5.areserver.net'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USE_SSL'] = True
+app.config['MAIL_USERNAME'] = 'pruebas.cms@asacoop.com'
+app.config['MAIL_PASSWORD'] = 'admin1234'
+mail = Mail(app)
 
 @app.route('/')
 def index():
